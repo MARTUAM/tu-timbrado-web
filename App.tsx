@@ -1,25 +1,25 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Logo } from './src/components/Logo';
-import { 
+import {
   User,
   Building2,
   Layers,
   Infinity,
-  ChevronDown, 
-  ChevronRight, 
+  ChevronDown,
+  ChevronRight,
   ChevronLeft,
-  Check, 
-  Heart, 
-  Clock, 
-  Lock, 
-  AlertCircle, 
-  Instagram, 
+  Check,
+  Heart,
+  Clock,
+  Lock,
+  AlertCircle,
+  Instagram,
   Facebook,
   Youtube,
   Twitter,
   Music,
-  MessageCircle, 
+  MessageCircle,
   Menu,
   X,
   Plus,
@@ -70,7 +70,7 @@ const Button = ({ children, variant = 'primary', className = '', ...props }: any
   };
 
   return (
-    <button 
+    <button
       className={`px-8 py-3 rounded-full font-bold transition-all duration-200 flex items-center justify-center gap-2 ${variants[variant]} ${className}`}
       {...props}
     >
@@ -80,7 +80,7 @@ const Button = ({ children, variant = 'primary', className = '', ...props }: any
 };
 
 const SketchCard = ({ children, className = '', skew = '', onClick }: any) => (
-  <div 
+  <div
     onClick={onClick}
     className={`sketch-card p-6 bg-white border-2 border-black rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all cursor-pointer hover:-translate-y-1 active:translate-y-0 active:shadow-none ${skew} ${className}`}
   >
@@ -107,7 +107,7 @@ const Navbar = ({ onNavigate }: { onNavigate: (view: string) => void }) => {
           <button onClick={() => onNavigate('home')} className="flex items-center gap-2 font-bold text-2xl tracking-tighter text-left">
             <Logo className="w-40 md:w-52 h-auto" />
           </button>
-          
+
           <div className="hidden lg:flex items-center gap-2 bg-cyan-50 border border-cyan-200 px-3 py-1.5 rounded-full shadow-sm">
             <div className="w-5 h-5 bg-cyan-500 text-white rounded-full flex items-center justify-center border border-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] scale-75">
               <Check className="w-3 h-3 stroke-[4]" />
@@ -120,10 +120,10 @@ const Navbar = ({ onNavigate }: { onNavigate: (view: string) => void }) => {
             <button onClick={() => onNavigate('contact')} className="hover:text-black transition-colors">Contacto</button>
           </div>
         </div>
-        
+
         <div className="flex items-center gap-4">
-          <Button variant="outline" className="hidden sm:flex scale-90 px-8 py-3 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">Acceder</Button>
-          <Button variant="primary" className="hidden md:flex scale-90">Empezar gratis</Button>
+          <a href="https://sistema.tutimbrado.mx/cfdi/users/login" className="hidden sm:flex scale-90 px-8 py-3 rounded-full font-bold border-2 border-black hover:bg-gray-50 text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">Acceder</a>
+          <a href="https://sistema.tutimbrado.mx/cfdi/users/registro" className="hidden md:flex scale-90 px-8 py-3 rounded-full font-bold bg-yellow-400 hover:bg-yellow-500 text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none items-center justify-center gap-2">Empezar gratis</a>
           <button className="md:hidden p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {mobileMenuOpen ? <X /> : <Menu />}
           </button>
@@ -140,7 +140,7 @@ const Navbar = ({ onNavigate }: { onNavigate: (view: string) => void }) => {
           </div>
           <button onClick={() => { onNavigate('faq'); setMobileMenuOpen(false); }} className="font-bold text-xl text-left">FAQ</button>
           <button onClick={() => { onNavigate('contact'); setMobileMenuOpen(false); }} className="font-bold text-xl text-left">Contacto</button>
-          <Button variant="primary" className="w-full">Empezar gratis</Button>
+          <a href="https://sistema.tutimbrado.mx/cfdi/users/registro" className="w-full px-8 py-3 rounded-full font-bold bg-yellow-400 hover:bg-yellow-500 text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none flex items-center justify-center gap-2">Empezar gratis</a>
         </div>
       )}
     </nav>
@@ -155,17 +155,17 @@ const Hero = () => {
           {/* Left Side: Content */}
           <div className="text-center lg:text-left order-2 lg:order-1 relative z-20">
             <h1 className="text-4xl md:text-5xl lg:text-[4rem] font-serif font-medium leading-[1.05] mb-6 tracking-tight text-black drop-shadow-sm max-w-2xl mx-auto lg:mx-0">
-              Factura en segundos, <br /> 
+              Factura en segundos, <br />
               <span className="relative inline-block mt-2">
                 No en horas
                 <span className="absolute bottom-2 left-0 w-full h-4 bg-cyan-400/80 -z-10 rotate-1 shadow-sm animate-draw-underline"></span>
               </span> como la competencia.
             </h1>
-            
+
             <p className="text-lg md:text-xl text-gray-700 mb-8 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
               Factura desde cualquier dispositivo conectado a internet.
             </p>
-            
+
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 md:gap-6 mb-10">
               <div className="flex items-center gap-2.5 group cursor-help">
                 <div className="w-9 h-9 rounded-full bg-yellow-400 flex items-center justify-center border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none transition-all">
@@ -192,11 +192,11 @@ const Hero = () => {
                 <span className="text-[9px] font-black uppercase tracking-widest text-gray-600">Sin Vigencia</span>
               </div>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start items-center">
-              <Button variant="primary" className="text-base py-4 px-10 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
+              <a href="https://sistema.tutimbrado.mx/cfdi/users/registro" className="text-base py-4 px-10 rounded-full font-bold bg-yellow-400 hover:bg-yellow-500 text-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 active:shadow-none flex items-center justify-center gap-2 transition-all">
                 Empezar gratis <ChevronRight className="w-5 h-5 ml-2" />
-              </Button>
+              </a>
               <div className="flex items-center gap-2 text-gray-400 font-bold text-[10px] uppercase tracking-tighter">
                 <Check className="w-3.5 h-3.5 text-green-500 stroke-[4]" /> No requiere tarjeta
               </div>
@@ -207,7 +207,7 @@ const Hero = () => {
           <div className="relative h-[350px] lg:h-[450px] w-full flex items-center justify-center lg:justify-end order-1 lg:order-2">
             {/* Decorative background blob */}
             <div className="absolute w-[300px] h-[300px] bg-cyan-400/20 rounded-full blur-3xl animate-pulse right-0" />
-            
+
             {/* Computer Frame */}
             <div className="relative w-[280px] lg:w-[420px] h-[200px] lg:h-[280px] border-4 border-black rounded-2xl bg-white shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] overflow-hidden group rotate-2 hover:rotate-0 transition-all duration-500 z-10 translate-x-0 lg:translate-x-4">
               {/* Browser Top Bar */}
@@ -218,9 +218,9 @@ const Hero = () => {
               </div>
               {/* Screen Content */}
               <div className="relative w-full h-[calc(100%-1.5rem)] lg:h-[calc(100%-2rem)]">
-                <img 
-                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800" 
-                  alt="Sistema de facturación en línea" 
+                <img
+                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800"
+                  alt="Sistema de facturación en línea"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                   referrerPolicy="no-referrer"
                 />
@@ -231,7 +231,7 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Floating elements around computer */}
             <div className="absolute top-10 lg:top-16 right-0 lg:-right-6 bg-pink-400 text-black px-3 py-1.5 rounded-lg border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] -rotate-12 z-20 font-black text-[9px] uppercase tracking-widest">
               100% Nube
@@ -239,10 +239,10 @@ const Hero = () => {
             <div className="absolute bottom-10 lg:bottom-16 left-10 lg:-left-4 bg-lime-400 text-black px-3 py-1.5 rounded-lg border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rotate-6 z-20 font-black text-[9px] uppercase tracking-widest">
               Rápido y Seguro
             </div>
-            
+
             {/* Doodle SVGs */}
             <svg className="absolute top-0 left-1/4 w-10 h-10 text-yellow-400 drop-shadow-md animate-spin-slow z-0" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="black" strokeWidth="1.5" strokeLinejoin="round"/>
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="black" strokeWidth="1.5" strokeLinejoin="round" />
             </svg>
             <svg className="absolute bottom-0 right-1/4 w-12 h-12 stroke-blue-500 drop-shadow-sm z-0 -rotate-12" viewBox="0 0 50 50" fill="none" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 25 L15 10 L25 40 L35 10 L45 25" />
@@ -298,7 +298,7 @@ const FeaturesCarousel = () => {
         </div>
 
         <div className="relative">
-          <div 
+          <div
             ref={scrollRef}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
@@ -307,9 +307,9 @@ const FeaturesCarousel = () => {
           >
             {[...services, ...services].map((service, i) => (
               <div key={i} className="inline-block min-w-[200px] md:min-w-[240px] whitespace-normal">
-                <SketchCard 
+                <SketchCard
                   onClick={() => setSelectedService(service)}
-                  className="flex flex-col items-center text-center h-full min-h-[140px] justify-center" 
+                  className="flex flex-col items-center text-center h-full min-h-[140px] justify-center"
                   skew={i % 2 === 0 ? 'rotate-1' : '-rotate-1'}
                 >
                   <div className={`w-12 h-12 ${service.color} border-2 border-black rounded-xl flex items-center justify-center mb-4 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]`}>
@@ -325,11 +325,11 @@ const FeaturesCarousel = () => {
 
       {/* Modal / Overlay de Detalle */}
       {selectedService && (
-        <div 
+        <div
           className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/40 backdrop-blur-sm transition-all animate-in fade-in"
           onClick={() => setSelectedService(null)}
         >
-          <div 
+          <div
             className="max-w-md w-full bg-white border-4 border-black rounded-3xl p-10 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] relative rotate-0"
             onClick={(e) => e.stopPropagation()}
           >
@@ -340,7 +340,7 @@ const FeaturesCarousel = () => {
             <p className="text-black text-xl leading-relaxed mb-8">
               {selectedService.desc}
             </p>
-            <button 
+            <button
               onClick={() => setSelectedService(null)}
               className="text-gray-400 font-black text-xs uppercase tracking-widest flex items-center gap-2 hover:text-black transition-colors"
             >
@@ -376,9 +376,9 @@ const PricingSection = ({ onNavigate }: { onNavigate: (view: string, option?: st
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {packages.map((pkg, i) => (
-            <SketchCard 
-              key={pkg.qty} 
-              className={`flex flex-col p-8 h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] ${pkg.color} ${pkg.featured ? 'border-[3px] ring-4 ring-black/5' : 'border-2'}`} 
+            <SketchCard
+              key={pkg.qty}
+              className={`flex flex-col p-8 h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] ${pkg.color} ${pkg.featured ? 'border-[3px] ring-4 ring-black/5' : 'border-2'}`}
               skew={i % 3 === 0 ? 'rotate-1' : i % 3 === 1 ? '-rotate-1' : 'rotate-0'}
             >
               {pkg.featured && (
@@ -386,7 +386,7 @@ const PricingSection = ({ onNavigate }: { onNavigate: (view: string, option?: st
                   {pkg.qty === "50" ? "MÁS POPULAR 🔥" : "MEJOR VALOR 💎"}
                 </div>
               )}
-              
+
               <div className="mb-6 text-center">
                 <h3 className={`text-[10px] font-black uppercase tracking-widest mb-2 ${pkg.featured ? 'text-black' : 'text-gray-400'}`}>
                   {pkg.label}
@@ -411,8 +411,8 @@ const PricingSection = ({ onNavigate }: { onNavigate: (view: string, option?: st
                 </div>
               </div>
 
-              <Button 
-                variant={pkg.featured ? "primary" : "outline"} 
+              <Button
+                variant={pkg.featured ? "primary" : "outline"}
                 onClick={() => onNavigate('contact')}
                 className={`w-full py-4 font-black uppercase tracking-widest text-xs shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none active:translate-x-1 active:translate-y-1 transition-all`}
               >
@@ -425,7 +425,7 @@ const PricingSection = ({ onNavigate }: { onNavigate: (view: string, option?: st
         <div className="mt-20 p-10 bg-gradient-to-br from-black to-gray-900 rounded-[3rem] text-white flex flex-col md:flex-row items-center justify-between gap-10 border-4 border-black shadow-[15px_15px_0px_0px_rgba(255,255,0,1)] relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-400/10 rounded-full -mr-32 -mt-32 blur-3xl group-hover:bg-yellow-400/20 transition-all duration-700" />
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-cyan-400/10 rounded-full -ml-24 -mb-24 blur-3xl group-hover:bg-cyan-400/20 transition-all duration-700" />
-          
+
           <div className="space-y-4 text-center md:text-left relative z-10">
             <div className="inline-flex items-center gap-2 bg-yellow-400 text-black px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-2">
               <Zap className="w-3 h-3 fill-current" /> Volumen Empresarial
@@ -435,9 +435,9 @@ const PricingSection = ({ onNavigate }: { onNavigate: (view: string, option?: st
               Diseñamos planes a la medida para empresas de alto volumen y distribuidores autorizados.
             </p>
           </div>
-          
-          <Button 
-            variant="primary" 
+
+          <Button
+            variant="primary"
             onClick={() => onNavigate('contact', 'personalizado')}
             className="bg-yellow-400 text-black border-white hover:bg-yellow-300 whitespace-nowrap text-lg py-6 px-10 shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:shadow-none active:translate-x-1 active:translate-y-1 transition-all relative z-10"
           >
@@ -453,7 +453,7 @@ const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initi
   const [submitted, setSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [selectedOption, setSelectedOption] = useState(initialOption);
-  
+
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   useEffect(() => {
@@ -465,14 +465,36 @@ const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initi
     }
   }, [submitted, onBack]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSending(true);
-    // Simular envío
-    setTimeout(() => {
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    // Add the specific option that the user selected
+    formData.append("Interes_Opcion", selectedOption);
+
+    try {
+      const response = await fetch("https://formspree.io/f/mqkenbyj", { // Reemplaza con tu Form ID real de formspree, o usa un endpoint temporal
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setIsSending(false);
+        setSubmitted(true);
+      } else {
+        alert("Hubo un problema al enviar tu mensaje. Intenta nuevamente.");
+        setIsSending(false);
+      }
+    } catch (error) {
+      alert("Error de conexión. Verifica tu internet e intenta de nuevo.");
       setIsSending(false);
-      setSubmitted(true);
-    }, 1200);
+    }
   };
 
   return (
@@ -512,11 +534,12 @@ const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initi
                   <label className="text-[10px] font-black uppercase tracking-widest ml-1">Nombre Completo *</label>
                   <div className="relative">
                     <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                    <input 
-                      required 
-                      type="text" 
-                      placeholder="Tu nombre aquí..." 
-                      className="w-full bg-white border-2 border-black rounded-xl py-3 pl-10 pr-4 font-bold focus:ring-4 ring-yellow-400/30 outline-none transition-all placeholder:text-gray-300 text-sm" 
+                    <input
+                      required
+                      name="Nombre_Completo"
+                      type="text"
+                      placeholder="Tu nombre aquí..."
+                      className="w-full bg-white border-2 border-black rounded-xl py-3 pl-10 pr-4 font-bold focus:ring-4 ring-yellow-400/30 outline-none transition-all placeholder:text-gray-300 text-sm"
                     />
                   </div>
                 </div>
@@ -525,11 +548,12 @@ const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initi
                   <label className="text-[10px] font-black uppercase tracking-widest ml-1">RFC *</label>
                   <div className="relative">
                     <Fingerprint className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                    <input 
-                      required 
-                      type="text" 
-                      placeholder="Tu RFC" 
-                      className="w-full bg-white border-2 border-black rounded-xl py-3 pl-10 pr-4 font-bold focus:ring-4 ring-yellow-400/30 outline-none transition-all placeholder:text-gray-300 uppercase text-sm" 
+                    <input
+                      required
+                      name="RFC"
+                      type="text"
+                      placeholder="Tu RFC"
+                      className="w-full bg-white border-2 border-black rounded-xl py-3 pl-10 pr-4 font-bold focus:ring-4 ring-yellow-400/30 outline-none transition-all placeholder:text-gray-300 uppercase text-sm"
                     />
                   </div>
                 </div>
@@ -539,11 +563,12 @@ const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initi
                     <label className="text-[10px] font-black uppercase tracking-widest ml-1">Correo Electrónico *</label>
                     <div className="relative">
                       <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                      <input 
-                        required 
-                        type="email" 
-                        placeholder="hola@ejemplo.com" 
-                        className="w-full bg-white border-2 border-black rounded-xl py-3 pl-10 pr-4 font-bold focus:ring-4 ring-yellow-400/30 outline-none transition-all placeholder:text-gray-300 text-sm" 
+                      <input
+                        required
+                        name="Email"
+                        type="email"
+                        placeholder="hola@ejemplo.com"
+                        className="w-full bg-white border-2 border-black rounded-xl py-3 pl-10 pr-4 font-bold focus:ring-4 ring-yellow-400/30 outline-none transition-all placeholder:text-gray-300 text-sm"
                       />
                     </div>
                   </div>
@@ -551,11 +576,12 @@ const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initi
                     <label className="text-[10px] font-black uppercase tracking-widest ml-1">Teléfono *</label>
                     <div className="relative">
                       <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                      <input 
-                        required 
-                        type="tel" 
-                        placeholder="10 dígitos" 
-                        className="w-full bg-white border-2 border-black rounded-xl py-3 pl-10 pr-4 font-bold focus:ring-4 ring-yellow-400/30 outline-none transition-all placeholder:text-gray-300 text-sm" 
+                      <input
+                        required
+                        name="Telefono"
+                        type="tel"
+                        placeholder="10 dígitos"
+                        className="w-full bg-white border-2 border-black rounded-xl py-3 pl-10 pr-4 font-bold focus:ring-4 ring-yellow-400/30 outline-none transition-all placeholder:text-gray-300 text-sm"
                       />
                     </div>
                   </div>
@@ -564,8 +590,8 @@ const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initi
                 <div className="space-y-1">
                   <label className="text-[10px] font-black uppercase tracking-widest ml-1">¿En qué podemos ayudarte? *</label>
                   <div className="relative">
-                    <select 
-                      required 
+                    <select
+                      required
                       value={selectedOption}
                       onChange={(e) => setSelectedOption(e.target.value)}
                       className="w-full bg-white border-2 border-black rounded-xl p-4 pr-10 font-bold focus:ring-4 ring-yellow-400/30 outline-none transition-all appearance-none cursor-pointer text-sm"
@@ -586,7 +612,7 @@ const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initi
                     <>Enviar Mensaje <Send className="w-5 h-5 ml-2" /></>
                   )}
                 </Button>
-                
+
                 <p className="text-[10px] font-bold text-center text-gray-400 uppercase tracking-widest italic">
                   * Todos los campos son obligatorios.
                 </p>
@@ -601,7 +627,7 @@ const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initi
                     <Check className="w-10 h-10 text-black stroke-[4]" />
                   </div>
                   <h3 className="text-3xl font-serif font-black mb-3">¡Mensaje Enviado!</h3>
-                  <p className="font-bold text-gray-600 mb-6">Te contactaremos muy pronto. <br/> Redireccionando al inicio...</p>
+                  <p className="font-bold text-gray-600 mb-6">Te contactaremos muy pronto. <br /> Redireccionando al inicio...</p>
                   <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
                     <div className="h-full bg-yellow-400 animate-[draw-underline_3.5s_linear_forwards]" />
                   </div>
@@ -622,7 +648,7 @@ const MultiRFCSection = ({ onNavigate }: { onNavigate: (view: string) => void })
         <div className="absolute top-10 right-10 opacity-10 hidden md:block">
           <Settings className="w-24 h-24 animate-spin-slow" />
         </div>
-        
+
         <div className="mb-12">
           <span className="bg-yellow-400 text-black text-[10px] font-black px-4 py-1.5 rounded-full uppercase mb-4 inline-block shadow-[3px_3px_0px_0px_rgba(255,255,255,0.2)]">Solución Corporativa</span>
           <h2 className="text-4xl md:text-5xl font-serif font-medium leading-tight max-w-3xl mb-4">Sistema Multi-RFC: Todo tu despacho en un solo lugar</h2>
@@ -683,7 +709,7 @@ const MultiRFCSection = ({ onNavigate }: { onNavigate: (view: string) => void })
 
         <div className="border-t border-white/10 pt-8">
           <div className="flex justify-center">
-            <Button 
+            <Button
               onClick={() => onNavigate('contact')}
               className="py-4 px-12 text-base shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:shadow-none"
             >
@@ -768,8 +794,8 @@ const FAQPage = ({ onBack }: { onBack: () => void }) => {
                   const isOpen = openKey === key;
                   return (
                     <div key={itemIdx} className={`border-2 border-black rounded-2xl overflow-hidden bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1`}>
-                      <button 
-                        onClick={() => setOpenKey(isOpen ? null : key)} 
+                      <button
+                        onClick={() => setOpenKey(isOpen ? null : key)}
                         className="w-full p-6 text-left flex items-center justify-between font-bold text-xl hover:bg-gray-50 transition-colors"
                       >
                         <span className="max-w-[85%]">{item.q}</span>
@@ -1024,7 +1050,7 @@ const RefundsPage = ({ onBack }: { onBack: () => void }) => {
           </div>
           Volver al inicio
         </button>
-        
+
         <div className="mb-16">
           <span className="bg-yellow-400 text-[10px] font-black px-3 py-1 rounded-full uppercase mb-4 inline-block shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] border border-black">Políticas</span>
           <h1 className="text-5xl md:text-7xl font-serif font-medium leading-tight mb-4 text-black">POLÍTICAS DE DEVOLUCIÓN Y CANCELACIÓN</h1>
@@ -1123,7 +1149,7 @@ const Footer = ({ onNavigate }: { onNavigate: (view: string) => void }) => (
           </button>
           <p className="text-gray-500 leading-relaxed max-w-sm">Vendiendo los mejores planes de folios desde 2020</p>
         </div>
-        
+
         <div className="md:col-span-4 space-y-6">
           <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-400">Legal</h4>
           <ul className="space-y-4 font-bold text-sm">
@@ -1136,11 +1162,19 @@ const Footer = ({ onNavigate }: { onNavigate: (view: string) => void }) => (
         <div className="md:col-span-4 space-y-6">
           <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-400">Redes Sociales</h4>
           <div className="flex flex-wrap gap-4">
-            <a href="#" className="w-10 h-10 border-2 border-black rounded-lg flex items-center justify-center hover:bg-yellow-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"><Instagram className="w-5 h-5" /></a>
-            <a href="#" className="w-10 h-10 border-2 border-black rounded-lg flex items-center justify-center hover:bg-yellow-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"><Facebook className="w-5 h-5" /></a>
-            <a href="#" className="w-10 h-10 border-2 border-black rounded-lg flex items-center justify-center hover:bg-yellow-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"><Youtube className="w-5 h-5" /></a>
-            <a href="#" className="w-10 h-10 border-2 border-black rounded-lg flex items-center justify-center hover:bg-yellow-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"><Twitter className="w-5 h-5" /></a>
-            <a href="#" className="w-10 h-10 border-2 border-black rounded-lg flex items-center justify-center hover:bg-yellow-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"><Music className="w-5 h-5" /></a>
+            <a href="https://www.facebook.com/tutimbrado" target="_blank" rel="noreferrer" className="w-10 h-10 border-2 border-black rounded-lg flex items-center justify-center hover:bg-yellow-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"><Facebook className="w-5 h-5" /></a>
+            <a href="https://www.instagram.com/tutimbrado/" target="_blank" rel="noreferrer" className="w-10 h-10 border-2 border-black rounded-lg flex items-center justify-center hover:bg-yellow-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"><Instagram className="w-5 h-5" /></a>
+            <a href="https://www.tiktok.com/@tu.timbrado" target="_blank" rel="noreferrer" className="w-10 h-10 border-2 border-black rounded-lg flex items-center justify-center hover:bg-yellow-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none">
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 15.68a6.34 6.34 0 0 0 6.27 6.36 6.34 6.34 0 0 0 6.25-6.36V7.95a8.16 8.16 0 0 0 5 1.54V6.05a4.81 4.81 0 0 1-2.93-1.36z" />
+              </svg>
+            </a>
+            <a href="https://x.com/TuTimbrado" target="_blank" rel="noreferrer" className="w-10 h-10 border-2 border-black rounded-lg flex items-center justify-center hover:bg-yellow-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none">
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.216-6.818-5.968 6.818h-3.31l7.65-8.74-8.08-10.74h6.82l4.685 6.138z" />
+              </svg>
+            </a>
+            <a href="https://www.youtube.com/channel/UC9eNYZXObqReG1zjgSZHgLA" target="_blank" rel="noreferrer" className="w-10 h-10 border-2 border-black rounded-lg flex items-center justify-center hover:bg-yellow-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"><Youtube className="w-5 h-5" /></a>
           </div>
         </div>
       </div>
@@ -1149,8 +1183,8 @@ const Footer = ({ onNavigate }: { onNavigate: (view: string) => void }) => (
           © 2026 Tu Timbrado S. de R.L. de C.V. Todos los derechos reservados
         </div>
         <div className="flex items-center gap-2 bg-cyan-50 border border-cyan-400 px-3 py-1.5 rounded-xl shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] scale-90">
-            <Lock className="w-3 h-3 text-cyan-600" />
-            <span className="text-[9px] font-black uppercase tracking-wider text-cyan-900">Toda tu información está cifrada</span>
+          <Lock className="w-3 h-3 text-cyan-600" />
+          <span className="text-[9px] font-black uppercase tracking-wider text-cyan-900">Toda tu información está cifrada</span>
         </div>
       </div>
     </div>
@@ -1167,7 +1201,7 @@ export default function App() {
   };
 
   const renderContent = () => {
-    switch(view) {
+    switch (view) {
       case 'privacy': return <PrivacyPage onBack={() => setView('home')} />;
       case 'terms': return <TermsPage onBack={() => setView('home')} />;
       case 'refunds': return <RefundsPage onBack={() => setView('home')} />;
@@ -1182,32 +1216,32 @@ export default function App() {
               <div className="flex flex-col md:flex-row gap-12 items-center">
                 <div className="flex-1 space-y-8">
                   <span className="bg-black text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">La diferencia</span>
-                  <h2 className="text-4xl md:text-6xl font-serif font-medium leading-tight">Estar al día con el SAT no tiene porque ser abrumador.</h2>
+                  <h2 className="text-4xl md:text-6xl font-serif font-medium leading-tight">Estar al día con el SAT no tiene por qué ser abrumador.</h2>
                   <p className="text-lg md:text-xl text-gray-500 leading-relaxed font-bold">Factura desde cualquier dispositivo conectado a internet</p>
-                  <Button variant="primary">Quiero probarlo gratis</Button>
+                  <a href="https://sistema.tutimbrado.mx/cfdi/users/registro" className="px-8 py-3 rounded-full font-bold bg-yellow-400 hover:bg-yellow-500 text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none flex items-center justify-center gap-2 max-w-max">Quiero probarlo gratis</a>
                 </div>
                 <div className="flex-1 relative">
                   <div className="absolute -inset-4 border-2 border-black border-dashed rounded-3xl -z-10 rotate-2" />
                   <div className="relative">
-                    <img 
-                      src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=800" 
-                      className="rounded-3xl border-2 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] -rotate-1 grayscale hover:grayscale-0 transition-all duration-500 w-full" 
-                      alt="Dashboard preview" 
+                    <img
+                      src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=800"
+                      className="rounded-3xl border-2 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] -rotate-1 grayscale hover:grayscale-0 transition-all duration-500 w-full"
+                      alt="Dashboard preview"
                     />
-                    
+
                     {/* Mockup de teléfono en la esquina */}
                     <div className="absolute -bottom-4 right-0 md:-bottom-4 md:right-2 w-32 md:w-40 aspect-[9/19.5] bg-black border-[3px] border-black rounded-[2.5rem] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] rotate-6 p-1.5 overflow-hidden flex flex-col animate-bounce-slow">
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-4 bg-black rounded-b-xl z-20" /> {/* Notch */}
-                        <div className="flex-grow bg-white rounded-[2rem] p-3 flex flex-col items-center justify-center text-center">
-                            <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mb-2 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                                <Check className="w-5 h-5 text-green-600 stroke-[3]" />
-                            </div>
-                            <h4 className="text-xs md:text-sm font-black leading-tight text-black mb-1">Factura realizada</h4>
-                            <p className="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-tighter">CFDI 4.0 Enviado</p>
-                            <div className="mt-3 w-full h-1 bg-gray-100 rounded-full overflow-hidden">
-                                <div className="w-full h-full bg-yellow-400 animate-pulse" />
-                            </div>
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-4 bg-black rounded-b-xl z-20" /> {/* Notch */}
+                      <div className="flex-grow bg-white rounded-[2rem] p-3 flex flex-col items-center justify-center text-center">
+                        <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mb-2 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                          <Check className="w-5 h-5 text-green-600 stroke-[3]" />
                         </div>
+                        <h4 className="text-xs md:text-sm font-black leading-tight text-black mb-1">Factura realizada</h4>
+                        <p className="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-tighter">CFDI 4.0 Enviado</p>
+                        <div className="mt-3 w-full h-1 bg-gray-100 rounded-full overflow-hidden">
+                          <div className="w-full h-full bg-yellow-400 animate-pulse" />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
