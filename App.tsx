@@ -24,6 +24,7 @@ import {
   X,
   Plus,
   ArrowLeft,
+  ArrowRight,
   FileText,
   Gavel,
   ShieldCheck,
@@ -355,50 +356,55 @@ const FeaturesCarousel = () => {
 
 const PricingSection = ({ onNavigate }: { onNavigate: (view: string, option?: string) => void }) => {
   const packages = [
-    { qty: "25", price: "$319.00", label: "Starter", color: "bg-white" },
-    { qty: "50", price: "$499.00", label: "Básico", featured: true, color: "bg-yellow-50" },
-    { qty: "100", price: "$849.00", label: "Plus", color: "bg-white" },
-    { qty: "300", price: "$1,399.00", label: "Negocio", color: "bg-white" },
-    { qty: "500", price: "$1,899.00", label: "Crecimiento", color: "bg-white" },
-    { qty: "1,000", price: "$3,099.00", label: "Empresa", color: "bg-white" },
-    { qty: "2,500", price: "$5,199.00", label: "Corporativo", color: "bg-white" },
-    { qty: "5,000", price: "$9,399.00", label: "Elite", featured: true, color: "bg-cyan-50" }
+    { folios: "25", price: "$319", name: "Starter", pricePerFolio: "$12.76", color: "bg-white" },
+    { folios: "50", price: "$499", name: "Básico", pricePerFolio: "$9.98", featured: true, color: "bg-yellow-50" },
+    { folios: "100", price: "$849", name: "Plus", pricePerFolio: "$8.49", color: "bg-white" },
+    { folios: "300", price: "$1,399", name: "Negocio", pricePerFolio: "$4.66", color: "bg-white" },
+    { folios: "500", price: "$1,899", name: "Crecimiento", pricePerFolio: "$3.79", color: "bg-white" },
+    { folios: "1,000", price: "$3,099", name: "Empresa", pricePerFolio: "$3.09", color: "bg-white" },
+    { folios: "2,500", price: "$5,199", name: "Corporativo", pricePerFolio: "$2.07", color: "bg-white" },
+    { folios: "5,000", price: "$9,399", name: "Elite", pricePerFolio: "$1.87", featured: true, color: "bg-cyan-50" }
   ];
 
   return (
     <section id="pricing" className="py-24 bg-white px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <span className="bg-yellow-400 text-[10px] font-black px-4 py-1.5 rounded-full uppercase mb-4 inline-block shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] border-2 border-black">Paquetes de Folios</span>
-          <h2 className="text-5xl md:text-6xl font-serif font-medium mb-4">Planes de Carga</h2>
-          <p className="text-gray-500 font-bold uppercase text-[10px] tracking-[0.3em]">Pagos únicos • Sin mensualidades • Folios sin vigencia</p>
+          <span className="bg-yellow-400 text-black text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest border-2 border-black inline-block mb-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+            PRECIOS
+          </span>
+          <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tighter uppercase">Planes Simples, Sin Sorpresas</h2>
+          <p className="text-lg text-gray-500 font-bold max-w-2xl mx-auto">
+            Folios que no caducan. Elige el paquete que mejor se adapte a tu volumen de facturación.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {packages.map((pkg, i) => (
+          {packages.map((plan, i) => (
             <SketchCard
-              key={pkg.qty}
-              className={`flex flex-col p-8 h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] ${pkg.color} ${pkg.featured ? 'border-[3px] ring-4 ring-black/5' : 'border-2'}`}
+              key={plan.folios}
+              className={`flex flex-col p-8 h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] ${plan.color} ${plan.featured ? 'border-[3px] ring-4 ring-black/5' : 'border-2'}`}
               skew={i % 3 === 0 ? 'rotate-1' : i % 3 === 1 ? '-rotate-1' : 'rotate-0'}
             >
-              {pkg.featured && (
+              {plan.featured && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-black text-white px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border-2 border-black shadow-[3px_3px_0px_0px_rgba(255,255,255,0.3)] z-10">
-                  {pkg.qty === "50" ? "MÁS POPULAR 🔥" : "MEJOR VALOR 💎"}
+                  {plan.folios === "50" ? "MÁS POPULAR 🔥" : "MEJOR VALOR 💎"}
                 </div>
               )}
 
               <div className="mb-6 text-center">
-                <h3 className={`text-[10px] font-black uppercase tracking-widest mb-2 ${pkg.featured ? 'text-black' : 'text-gray-400'}`}>
-                  {pkg.label}
-                </h3>
-                <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-5xl font-serif font-medium">{pkg.qty}</span>
-                  <span className="text-xs font-bold uppercase text-gray-400">Folios</span>
+                <h3 className="text-2xl font-black uppercase tracking-tighter mb-2">{plan.name}</h3>
+                <div className="flex items-baseline gap-1 mb-2 justify-center">
+                  <span className="text-4xl font-black tracking-tighter">{plan.price}</span>
+                  <span className="text-sm font-bold text-gray-400">MXN</span>
                 </div>
+                {/* Mejorada la tipografía de "folios" y el precio por folio */}
+                <p className="text-sm font-black text-gray-500 bg-gray-100 py-1 px-3 rounded-full inline-block border-2 border-transparent">
+                  <span className="text-black text-lg">{plan.folios}</span> folios • <span className="text-blue-600">{plan.pricePerFolio} c/u</span>
+                </p>
               </div>
 
               <div className="flex-grow flex flex-col justify-center items-center text-center mb-8">
-                <div className="text-4xl font-black tracking-tight mb-2">{pkg.price}</div>
                 <div className="flex flex-col gap-2 w-full mt-4">
                   <div className="flex items-center gap-2 text-[10px] font-bold text-gray-600 bg-gray-100/50 p-2 rounded-lg border border-black/5">
                     <Check className="w-3 h-3 text-green-500 stroke-[3]" />
@@ -412,7 +418,7 @@ const PricingSection = ({ onNavigate }: { onNavigate: (view: string, option?: st
               </div>
 
               <Button
-                variant={pkg.featured ? "primary" : "outline"}
+                variant={plan.featured ? "primary" : "outline"}
                 onClick={() => onNavigate('contact')}
                 className={`w-full py-4 font-black uppercase tracking-widest text-xs shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none active:translate-x-1 active:translate-y-1 transition-all`}
               >
@@ -422,27 +428,16 @@ const PricingSection = ({ onNavigate }: { onNavigate: (view: string, option?: st
           ))}
         </div>
 
-        <div className="mt-20 p-10 bg-gradient-to-br from-black to-gray-900 rounded-[3rem] text-white flex flex-col md:flex-row items-center justify-between gap-10 border-4 border-black shadow-[15px_15px_0px_0px_rgba(255,255,0,1)] relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-400/10 rounded-full -mr-32 -mt-32 blur-3xl group-hover:bg-yellow-400/20 transition-all duration-700" />
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-cyan-400/10 rounded-full -ml-24 -mb-24 blur-3xl group-hover:bg-cyan-400/20 transition-all duration-700" />
-
-          <div className="space-y-4 text-center md:text-left relative z-10">
-            <div className="inline-flex items-center gap-2 bg-yellow-400 text-black px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-2">
-              <Zap className="w-3 h-3 fill-current" /> Volumen Empresarial
+        <div className="mt-16 bg-white border-4 border-black rounded-3xl p-8 md:p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] text-center relative overflow-hidden group hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all">
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="text-left">
+              <h3 className="text-3xl font-black uppercase tracking-tighter mb-2 text-black">¿Necesitas más de 5,000 folios?</h3>
+              <p className="text-gray-500 font-bold text-lg">Diseñamos planes a la medida para empresas de alto volumen.</p>
             </div>
-            <h4 className="text-3xl md:text-4xl font-serif font-medium leading-tight">¿Necesitas más de 5,000 folios?</h4>
-            <p className="text-gray-400 font-bold text-lg max-w-xl">
-              Diseñamos planes a la medida para empresas de alto volumen y distribuidores autorizados.
-            </p>
+            <button onClick={() => onNavigate('contact', 'personalizado')} className="px-8 py-4 bg-yellow-400 hover:bg-yellow-500 text-black font-black rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-black active:translate-x-[2px] active:translate-y-[2px] active:shadow-none whitespace-nowrap transition-all flex items-center gap-2">
+              Cotizar paquete personalizado <ArrowRight className="w-5 h-5" />
+            </button>
           </div>
-
-          <Button
-            variant="primary"
-            onClick={() => onNavigate('contact', 'personalizado')}
-            className="bg-yellow-400 text-black border-white hover:bg-yellow-300 whitespace-nowrap text-lg py-6 px-10 shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:shadow-none active:translate-x-1 active:translate-y-1 transition-all relative z-10"
-          >
-            Contactar Ventas
-          </Button>
         </div>
       </div>
     </section>
@@ -476,7 +471,9 @@ const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initi
     formData.append("Interes_Opcion", selectedOption);
 
     try {
-      const response = await fetch("https://formspree.io/f/mqkenbyj", { // Reemplaza con tu Form ID real de formspree, o usa un endpoint temporal
+      // Reemplaza YOUR_FORMSPREE_ID con tu ID real de Formspree (ej. "mqkenbyj")
+      const formspreeId = "YOUR_FORMSPREE_ID"; // <-- ¡Pon tu ID de Formspree aquí!
+      const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
         method: "POST",
         body: formData,
         headers: {
@@ -1216,31 +1213,38 @@ export default function App() {
               <div className="flex flex-col md:flex-row gap-12 items-center">
                 <div className="flex-1 space-y-8">
                   <span className="bg-black text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">La diferencia</span>
-                  <h2 className="text-4xl md:text-6xl font-serif font-medium leading-tight">Estar al día con el SAT no tiene por qué ser abrumador.</h2>
-                  <p className="text-lg md:text-xl text-gray-500 leading-relaxed font-bold">Factura desde cualquier dispositivo conectado a internet</p>
+                  <h2 className="text-4xl md:text-6xl font-serif font-medium leading-tight">Estar al día con tu facturación no tiene por qué ser abrumador.</h2>
+                  <p className="text-lg md:text-xl text-gray-500 leading-relaxed font-bold">
+                    Factura desde cualquier dispositivo conectado a internet; el software en línea más rápido de México.
+                  </p>
                   <a href="https://sistema.tutimbrado.mx/cfdi/users/registro" className="px-8 py-3 rounded-full font-bold bg-yellow-400 hover:bg-yellow-500 text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none flex items-center justify-center gap-2 max-w-max">Quiero probarlo gratis</a>
                 </div>
-                <div className="flex-1 relative">
+                <div className="flex-1 relative w-full overflow-hidden">
                   <div className="absolute -inset-4 border-2 border-black border-dashed rounded-3xl -z-10 rotate-2" />
-                  <div className="relative">
-                    <img
-                      src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=800"
-                      className="rounded-3xl border-2 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] -rotate-1 grayscale hover:grayscale-0 transition-all duration-500 w-full"
-                      alt="Dashboard preview"
-                    />
+                  {/* Añadida la clase "animate-float" para que el video levite suavemente */}
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="animate-float rounded-[2.5rem] border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] object-cover h-[450px] md:h-[500px] w-full bg-black hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] transition-shadow duration-500"
+                  >
+                    {/* 👇 AQUÍ VA EL NOMBRE DE TU VIDEO 👇 */}
+                    <source src="/mi-video-hero.mp4" type="video/mp4" />
+                    Tu navegador no permite reproducir este video.
+                  </video>
 
-                    {/* Mockup de teléfono en la esquina */}
-                    <div className="absolute -bottom-4 right-0 md:-bottom-4 md:right-2 w-32 md:w-40 aspect-[9/19.5] bg-black border-[3px] border-black rounded-[2.5rem] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] rotate-6 p-1.5 overflow-hidden flex flex-col animate-bounce-slow">
-                      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-4 bg-black rounded-b-xl z-20" /> {/* Notch */}
-                      <div className="flex-grow bg-white rounded-[2rem] p-3 flex flex-col items-center justify-center text-center">
-                        <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mb-2 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                          <Check className="w-5 h-5 text-green-600 stroke-[3]" />
-                        </div>
-                        <h4 className="text-xs md:text-sm font-black leading-tight text-black mb-1">Factura realizada</h4>
-                        <p className="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-tighter">CFDI 4.0 Enviado</p>
-                        <div className="mt-3 w-full h-1 bg-gray-100 rounded-full overflow-hidden">
-                          <div className="w-full h-full bg-yellow-400 animate-pulse" />
-                        </div>
+                  {/* Mockup de teléfono en la esquina */}
+                  <div className="absolute -bottom-4 right-0 md:-bottom-4 md:right-2 w-32 md:w-40 aspect-[9/19.5] bg-black border-[3px] border-black rounded-[2.5rem] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] rotate-6 p-1.5 overflow-hidden flex flex-col animate-bounce-slow">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-4 bg-black rounded-b-xl z-20" /> {/* Notch */}
+                    <div className="flex-grow bg-white rounded-[2rem] p-3 flex flex-col items-center justify-center text-center">
+                      <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mb-2 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                        <Check className="w-5 h-5 text-green-600 stroke-[3]" />
+                      </div>
+                      <h4 className="text-xs md:text-sm font-black leading-tight text-black mb-1">Factura realizada</h4>
+                      <p className="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-tighter">CFDI 4.0 Enviado</p>
+                      <div className="mt-3 w-full h-1 bg-gray-100 rounded-full overflow-hidden">
+                        <div className="w-full h-full bg-yellow-400 animate-pulse" />
                       </div>
                     </div>
                   </div>
