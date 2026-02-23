@@ -60,6 +60,16 @@ import {
   Loader2
 } from 'lucide-react';
 
+const playSound = (type = 'click') => {
+  const sounds: any = {
+    click: 'https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3', // Subtle pop/click
+    hover: 'https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3'  // Light tick
+  };
+  const audio = new Audio(sounds[type]);
+  audio.volume = 0.4;
+  audio.play().catch(() => { }); // Catch silence errors (browser blocks audio without interaction)
+};
+
 // --- Shared Components & Utilities ---
 
 const Button = ({ children, variant = 'primary', className = '', ...props }: any) => {
@@ -73,6 +83,10 @@ const Button = ({ children, variant = 'primary', className = '', ...props }: any
   return (
     <button
       className={`px-8 py-3 rounded-full font-bold transition-all duration-200 flex items-center justify-center gap-2 ${variants[variant]} ${className}`}
+      onClick={(e) => {
+        playSound('click');
+        props.onClick?.(e);
+      }}
       {...props}
     >
       {children}
@@ -82,7 +96,10 @@ const Button = ({ children, variant = 'primary', className = '', ...props }: any
 
 const SketchCard = ({ children, className = '', skew = '', onClick }: any) => (
   <div
-    onClick={onClick}
+    onClick={(e) => {
+      playSound('click');
+      onClick?.(e);
+    }}
     className={`sketch-card p-6 bg-white border-2 border-black rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all cursor-pointer hover:-translate-y-1 active:translate-y-0 active:shadow-none ${skew} ${className}`}
   >
     {children}
@@ -428,7 +445,7 @@ const PricingSection = ({ onNavigate }: { onNavigate: (view: string, option?: st
 
               <Button
                 variant={plan.featured ? "primary" : "outline"}
-                onClick={() => onNavigate('contact', `DESEO ADQUIRIR FOLIOS: PAQUETE DE ${plan.folios} FOLIOS POR ${plan.price}`)}
+                onClick={() => onNavigate('contact', `DESEO ADQUIRIR FOLIOS: ${plan.folios} FOLIOS - ${plan.price}`)}
                 className={`w-full py-4 font-black uppercase tracking-widest text-xs shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none active:translate-x-1 active:translate-y-1 transition-all`}
               >
                 Seleccionar
@@ -457,7 +474,7 @@ const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initi
   const [submitted, setSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [selectedOption, setSelectedOption] = useState(initialOption.startsWith("DESEO ADQUIRIR FOLIOS") ? "DESEO ADQUIRIR FOLIOS" : initialOption);
-  const [selectedPackage, setSelectedPackage] = useState(initialOption.includes("PAQUETE DE") ? initialOption.split(": ")[1] : "");
+  const [selectedPackage, setSelectedPackage] = useState(initialOption.includes(": ") ? initialOption.split(": ")[1] : "");
 
   const folioPackages = [
     "25 FOLIOS - $319",
