@@ -198,8 +198,8 @@ const Hero = () => {
               <a href="https://sistema.tutimbrado.mx/cfdi/users/registro" className="text-base py-4 px-10 rounded-full font-bold bg-yellow-400 hover:bg-yellow-500 text-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 active:shadow-none flex items-center justify-center gap-2 transition-all">
                 Empezar gratis <ChevronRight className="w-5 h-5 ml-2" />
               </a>
-              <div className="flex items-center gap-2 text-gray-400 font-bold text-[10px] uppercase tracking-tighter">
-                <Check className="w-3.5 h-3.5 text-green-500 stroke-[4]" /> No requiere tarjeta
+              <div className="flex items-center gap-2 text-black font-black text-sm uppercase tracking-tighter">
+                <Check className="w-4 h-4 text-green-500 stroke-[4]" /> No requiere tarjeta
               </div>
             </div>
           </div>
@@ -376,7 +376,7 @@ const PricingSection = ({ onNavigate }: { onNavigate: (view: string, option?: st
           <span className="bg-yellow-400 text-black text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest border-2 border-black inline-block mb-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
             PRECIOS
           </span>
-          <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tighter uppercase">Planes Simples, Sin Sorpresas</h2>
+          <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tighter uppercase">Paquetes Simples, Sin Sorpresas</h2>
           <p className="text-lg text-gray-500 font-bold max-w-2xl mx-auto">
             Folios que no caducan. Elige el paquete que mejor se adapte a tu volumen de facturación.
           </p>
@@ -403,7 +403,7 @@ const PricingSection = ({ onNavigate }: { onNavigate: (view: string, option?: st
                 </div>
                 {/* Mejorada la tipografía de "folios" y el precio por folio */}
                 <p className="text-sm font-black text-gray-500 bg-gray-100 py-1 px-3 rounded-full inline-block border-2 border-transparent">
-                  <span className="text-black text-lg">{plan.folios}</span> folios • <span className="text-blue-600">{plan.pricePerFolio} c/u</span>
+                  <span className="text-black text-lg">{plan.folios}</span> folios • IVA incluido
                 </p>
               </div>
 
@@ -450,7 +450,7 @@ const PricingSection = ({ onNavigate }: { onNavigate: (view: string, option?: st
 const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initialOption?: string }) => {
   const [submitted, setSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(initialOption);
+  const [message, setMessage] = useState(initialOption);
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -471,7 +471,7 @@ const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initi
     const formData = new FormData(form);
 
     // Add the specific option that the user selected
-    formData.append("Mensaje_Seleccionado", selectedOption);
+    formData.append("Mensaje", message);
 
     try {
       const formspreeId = "xbdapjpz";
@@ -589,19 +589,15 @@ const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initi
                 <div className="space-y-1">
                   <label className="text-[10px] font-black uppercase tracking-widest ml-1">¿En qué podemos ayudarte? *</label>
                   <div className="relative">
-                    <select
+                    <textarea
                       required
-                      name="Asunto"
-                      value={selectedOption}
-                      onChange={(e) => setSelectedOption(e.target.value)}
-                      className="w-full bg-white border-2 border-black rounded-xl p-4 pr-10 font-bold focus:ring-4 ring-yellow-400/30 outline-none transition-all appearance-none cursor-pointer text-sm"
-                    >
-                      <option value="" disabled>SELECCIONA UNA OPCIÓN...</option>
-                      <option value="DESEO UN PAQUETE DE FOLIOS PERSONALIZADOS">DESEO UN PAQUETE DE FOLIOS PERSONALIZADOS</option>
-                      <option value="DESEO CONTRATAR SISTEMA MULTIRFC">DESEO CONTRATAR SISTEMA MULTIRFC</option>
-                      <option value="DESEO ASISTENCIA DE SOPORTE">DESEO ASISTENCIA DE SOPORTE</option>
-                    </select>
-                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black pointer-events-none" />
+                      name="Mensaje"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      placeholder="Escribe 'quiero folios', 'acerca del sistema MultiRFC' o 'deseo soporte técnico'..."
+                      rows={4}
+                      className="w-full bg-white border-2 border-black rounded-xl p-4 font-bold focus:ring-4 ring-yellow-400/30 outline-none transition-all placeholder:text-gray-300 text-sm resize-none"
+                    />
                   </div>
                 </div>
 
