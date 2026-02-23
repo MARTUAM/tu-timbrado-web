@@ -450,7 +450,7 @@ const PricingSection = ({ onNavigate }: { onNavigate: (view: string, option?: st
 const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initialOption?: string }) => {
   const [submitted, setSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
-  const [message, setMessage] = useState(initialOption);
+  const [selectedOption, setSelectedOption] = useState(initialOption);
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -471,7 +471,7 @@ const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initi
     const formData = new FormData(form);
 
     // Add the specific option that the user selected
-    formData.append("Mensaje", message);
+    formData.append("Mensaje_Seleccionado", selectedOption);
 
     try {
       const formspreeId = "xbdapjpz";
@@ -589,15 +589,19 @@ const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initi
                 <div className="space-y-1">
                   <label className="text-[10px] font-black uppercase tracking-widest ml-1">¿En qué podemos ayudarte? *</label>
                   <div className="relative">
-                    <textarea
+                    <select
                       required
-                      name="Mensaje"
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Escribe 'quiero folios', 'acerca del sistema MultiRFC' o 'deseo soporte técnico'..."
-                      rows={4}
-                      className="w-full bg-white border-2 border-black rounded-xl p-4 font-bold focus:ring-4 ring-yellow-400/30 outline-none transition-all placeholder:text-gray-300 text-sm resize-none"
-                    />
+                      name="Asunto"
+                      value={selectedOption}
+                      onChange={(e) => setSelectedOption(e.target.value)}
+                      className="w-full bg-white border-2 border-black rounded-xl p-4 pr-10 font-bold focus:ring-4 ring-yellow-400/30 outline-none transition-all appearance-none cursor-pointer text-sm"
+                    >
+                      <option value="" disabled>SELECCIONA UNA OPCIÓN...</option>
+                      <option value="DESEO UN PAQUETE DE FOLIOS PERSONALIZADOS">DESEO UN PAQUETE DE FOLIOS PERSONALIZADOS</option>
+                      <option value="DESEO CONTRATAR SISTEMA MULTIRFC">DESEO CONTRATAR SISTEMA MULTIRFC</option>
+                      <option value="DESEO ASISTENCIA DE SOPORTE">DESEO ASISTENCIA DE SOPORTE</option>
+                    </select>
+                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black pointer-events-none" />
                   </div>
                 </div>
 
