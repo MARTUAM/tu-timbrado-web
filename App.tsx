@@ -122,7 +122,13 @@ const Navbar = ({ onNavigate }: { onNavigate: (view: string) => void }) => {
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          {/* Mobile priority buttons */}
+          <div className="flex md:hidden items-center gap-2 mr-2">
+            <a href="https://sistema.tutimbrado.mx/cfdi/users/login" className="px-4 py-2 rounded-full font-bold border-2 border-black bg-white text-[10px] uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none">Acceder</a>
+            <a href="https://sistema.tutimbrado.mx/cfdi/users/registro" className="px-4 py-2 rounded-full font-bold bg-yellow-400 text-black text-[10px] uppercase border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none">Empezar</a>
+          </div>
+
           <a href="https://sistema.tutimbrado.mx/cfdi/users/login" className="hidden sm:flex scale-90 px-8 py-3 rounded-full font-bold border-2 border-black hover:bg-gray-50 text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">Acceder</a>
           <a href="https://sistema.tutimbrado.mx/cfdi/users/registro" className="hidden md:flex scale-90 px-8 py-3 rounded-full font-bold bg-yellow-400 hover:bg-yellow-500 text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none items-center justify-center gap-2">Empezar gratis</a>
           <button className="md:hidden p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
@@ -422,7 +428,7 @@ const PricingSection = ({ onNavigate }: { onNavigate: (view: string, option?: st
 
               <Button
                 variant={plan.featured ? "primary" : "outline"}
-                onClick={() => onNavigate('contact')}
+                onClick={() => onNavigate('contact', `DESEO ADQUIRIR FOLIOS: PAQUETE DE ${plan.folios} FOLIOS POR ${plan.price}`)}
                 className={`w-full py-4 font-black uppercase tracking-widest text-xs shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none active:translate-x-1 active:translate-y-1 transition-all`}
               >
                 Seleccionar
@@ -450,7 +456,19 @@ const PricingSection = ({ onNavigate }: { onNavigate: (view: string, option?: st
 const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initialOption?: string }) => {
   const [submitted, setSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(initialOption);
+  const [selectedOption, setSelectedOption] = useState(initialOption.startsWith("DESEO ADQUIRIR FOLIOS") ? "DESEO ADQUIRIR FOLIOS" : initialOption);
+  const [selectedPackage, setSelectedPackage] = useState(initialOption.includes("PAQUETE DE") ? initialOption.split(": ")[1] : "");
+
+  const folioPackages = [
+    "25 FOLIOS - $319",
+    "50 FOLIOS - $499",
+    "100 FOLIOS - $849",
+    "300 FOLIOS - $1,399",
+    "500 FOLIOS - $1,899",
+    "1,000 FOLIOS - $3,099",
+    "2,500 FOLIOS - $5,199",
+    "5,000 FOLIOS - $9,399"
+  ];
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -597,6 +615,7 @@ const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initi
                       className="w-full bg-white border-2 border-black rounded-xl p-4 pr-10 font-bold focus:ring-4 ring-yellow-400/30 outline-none transition-all appearance-none cursor-pointer text-sm"
                     >
                       <option value="" disabled>SELECCIONA UNA OPCIÓN...</option>
+                      <option value="DESEO ADQUIRIR FOLIOS">DESEO ADQUIRIR FOLIOS</option>
                       <option value="DESEO UN PAQUETE DE FOLIOS PERSONALIZADOS">DESEO UN PAQUETE DE FOLIOS PERSONALIZADOS</option>
                       <option value="DESEO CONTRATAR SISTEMA MULTIRFC">DESEO CONTRATAR SISTEMA MULTIRFC</option>
                       <option value="DESEO ASISTENCIA DE SOPORTE">DESEO ASISTENCIA DE SOPORTE</option>
@@ -604,6 +623,27 @@ const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initi
                     <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black pointer-events-none" />
                   </div>
                 </div>
+
+                {selectedOption === "DESEO ADQUIRIR FOLIOS" && (
+                  <div className="space-y-1 animate-in slide-in-from-top-2 duration-300">
+                    <label className="text-[10px] font-black uppercase tracking-widest ml-1">¿Qué paquete desea adquirir? *</label>
+                    <div className="relative">
+                      <select
+                        required
+                        name="Paquete_Deseado"
+                        value={selectedPackage}
+                        onChange={(e) => setSelectedPackage(e.target.value)}
+                        className="w-full bg-white border-2 border-black rounded-xl p-4 pr-10 font-bold focus:ring-4 ring-yellow-400/30 outline-none transition-all appearance-none cursor-pointer text-sm"
+                      >
+                        <option value="" disabled>SELECCIONA UN PAQUETE...</option>
+                        {folioPackages.map((pkg) => (
+                          <option key={pkg} value={pkg}>{pkg}</option>
+                        ))}
+                      </select>
+                      <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black pointer-events-none" />
+                    </div>
+                  </div>
+                )}
 
                 <Button disabled={isSending} type="submit" className="w-full py-4 text-lg shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none translate-y-0 active:translate-y-2 transition-all mt-4">
                   {isSending ? (
