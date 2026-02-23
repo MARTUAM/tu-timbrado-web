@@ -257,6 +257,7 @@ const Hero = () => {
 
 const FeaturesCarousel = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollPosition = useRef(0);
   const [isPaused, setIsPaused] = useState(false);
   const [selectedService, setSelectedService] = useState<any>(null);
 
@@ -278,8 +279,10 @@ const FeaturesCarousel = () => {
     let animationFrameId: number;
     const scroll = () => {
       if (scrollRef.current && !isPaused && !selectedService) {
-        scrollRef.current.scrollLeft += 0.8;
+        scrollPosition.current += 1;
+        scrollRef.current.scrollLeft = scrollPosition.current;
         if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth / 2) {
+          scrollPosition.current = 0;
           scrollRef.current.scrollLeft = 0;
         }
       }
@@ -434,7 +437,7 @@ const PricingSection = ({ onNavigate }: { onNavigate: (view: string, option?: st
               <h3 className="text-3xl font-black uppercase tracking-tighter mb-2 text-black">¿Necesitas más de 5,000 folios?</h3>
               <p className="text-gray-500 font-bold text-lg">Diseñamos planes a la medida para empresas de alto volumen.</p>
             </div>
-            <button onClick={() => onNavigate('contact', 'personalizado')} className="px-8 py-4 bg-yellow-400 hover:bg-yellow-500 text-black font-black rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-black active:translate-x-[2px] active:translate-y-[2px] active:shadow-none whitespace-nowrap transition-all flex items-center gap-2">
+            <button onClick={() => onNavigate('contact', 'DESEO UN PAQUETE DE FOLIOS PERSONALIZADOS')} className="px-8 py-4 bg-yellow-400 hover:bg-yellow-500 text-black font-black rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-black active:translate-x-[2px] active:translate-y-[2px] active:shadow-none whitespace-nowrap transition-all flex items-center gap-2">
               Cotizar paquete personalizado <ArrowRight className="w-5 h-5" />
             </button>
           </div>
@@ -594,9 +597,9 @@ const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initi
                       className="w-full bg-white border-2 border-black rounded-xl p-4 pr-10 font-bold focus:ring-4 ring-yellow-400/30 outline-none transition-all appearance-none cursor-pointer text-sm"
                     >
                       <option value="" disabled>SELECCIONA UNA OPCIÓN...</option>
-                      <option value="personalizado">DESEO UN PAQUETE DE FOLIOS PERSONALIZADO</option>
-                      <option value="multirfc">DESEO CONTRATAR SISTEMA MultiRFC</option>
-                      <option value="soporte">DESEO ASISTENCIA DE SOPORTE</option>
+                      <option value="DESEO UN PAQUETE DE FOLIOS PERSONALIZADOS">DESEO UN PAQUETE DE FOLIOS PERSONALIZADOS</option>
+                      <option value="DESEO CONTRATAR SISTEMA MULTIRFC">DESEO CONTRATAR SISTEMA MULTIRFC</option>
+                      <option value="DESEO ASISTENCIA DE SOPORTE">DESEO ASISTENCIA DE SOPORTE</option>
                     </select>
                     <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black pointer-events-none" />
                   </div>
