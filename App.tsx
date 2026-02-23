@@ -226,7 +226,8 @@ const Hero = () => {
                   playsInline
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 bg-black"
                 >
-                  <source src="/mi-video-hero.mp4" type="video/mp4" />
+                  {/* Video provisto por la usuaria */}
+                  <source src="https://drive.google.com/uc?export=download&id=11Yh2sJz8tDl3PM55vP2WGgF40UtdNu7O" type="video/mp4" />
                   Tu navegador no permite reproducir este video.
                 </video>
               </div>
@@ -407,11 +408,7 @@ const PricingSection = ({ onNavigate }: { onNavigate: (view: string, option?: st
                 <div className="flex flex-col gap-2 w-full mt-4">
                   <div className="flex items-center gap-2 text-[10px] font-bold text-gray-600 bg-gray-100/50 p-2 rounded-lg border border-black/5">
                     <Check className="w-3 h-3 text-green-500 stroke-[3]" />
-                    <span>Sin fecha de caducidad</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-[10px] font-bold text-gray-600 bg-gray-100/50 p-2 rounded-lg border border-black/5">
-                    <Check className="w-3 h-3 text-green-500 stroke-[3]" />
-                    <span>Multi-RFC incluido</span>
+                    <span>Soporte Técnico</span>
                   </div>
                 </div>
               </div>
@@ -1221,9 +1218,10 @@ export default function App() {
                 <div className="flex-1 relative w-full overflow-hidden">
                   <div className="absolute -inset-4 border-2 border-black border-dashed rounded-3xl -z-10 rotate-2" />
                   <div className="relative">
+                    {/* 👇 AQUÍ PEGARÁS EL ENLACE DE TU FOTO DE "LA DIFERENCIA" 👇 */}
                     <img
-                      src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=800"
-                      className="animate-float rounded-[2.5rem] border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 w-full object-cover h-[450px] md:h-[500px]"
+                      src="https://PON_AQUI_EL_ENLACE_DE_TU_FOTO.jpg"
+                      className="animate-float rounded-[2.5rem] border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 w-full object-cover h-[250px] md:h-[300px]"
                       alt="Dashboard preview"
                     />
 
