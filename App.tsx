@@ -224,7 +224,7 @@ const Hero = () => {
                   loop
                   muted
                   playsInline
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 bg-black"
+                  className="w-full h-full object-cover transition-all duration-700 bg-black"
                 >
                   {/* 👇 ENLACE DE TU VIDEO (Debe terminar en .mp4 y NO ser de Google Drive) 👇 */}
                   <source src="https://res.cloudinary.com/dmv0u6d5l/video/upload/v1771809766/mi-video-hero.mp4_ckzfmb.mp4" type="video/mp4" />
@@ -356,7 +356,7 @@ const FeaturesCarousel = () => {
 
 const PricingSection = ({ onNavigate }: { onNavigate: (view: string, option?: string) => void }) => {
   const packages = [
-    { folios: "25", price: "$319", name: "Starter", pricePerFolio: "$12.76", color: "bg-white" },
+    { folios: "25", price: "$319", name: "Comienza", pricePerFolio: "$12.76", color: "bg-white" },
     { folios: "50", price: "$499", name: "Básico", pricePerFolio: "$9.98", featured: true, color: "bg-yellow-50" },
     { folios: "100", price: "$849", name: "Plus", pricePerFolio: "$8.49", color: "bg-white" },
     { folios: "300", price: "$1,399", name: "Negocio", pricePerFolio: "$4.66", color: "bg-white" },
@@ -406,6 +406,10 @@ const PricingSection = ({ onNavigate }: { onNavigate: (view: string, option?: st
 
               <div className="flex-grow flex flex-col justify-center items-center text-center mb-8">
                 <div className="flex flex-col gap-2 w-full mt-4">
+                  <div className="flex items-center gap-2 text-[10px] font-bold text-gray-600 bg-gray-100/50 p-2 rounded-lg border border-black/5">
+                    <Check className="w-3 h-3 text-green-500 stroke-[3]" />
+                    <span>Sin fecha de caducidad</span>
+                  </div>
                   <div className="flex items-center gap-2 text-[10px] font-bold text-gray-600 bg-gray-100/50 p-2 rounded-lg border border-black/5">
                     <Check className="w-3 h-3 text-green-500 stroke-[3]" />
                     <span>Soporte Técnico</span>
@@ -1155,19 +1159,19 @@ const Footer = ({ onNavigate }: { onNavigate: (view: string) => void }) => (
         <div className="md:col-span-4 space-y-6">
           <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-400">Redes Sociales</h4>
           <div className="flex flex-wrap gap-4">
-            <a href="https://www.facebook.com/tutimbrado" target="_blank" rel="noreferrer" className="w-10 h-10 border-2 border-black rounded-lg flex items-center justify-center hover:bg-yellow-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"><Facebook className="w-5 h-5" /></a>
-            <a href="https://www.instagram.com/tutimbrado/" target="_blank" rel="noreferrer" className="w-10 h-10 border-2 border-black rounded-lg flex items-center justify-center hover:bg-yellow-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"><Instagram className="w-5 h-5" /></a>
-            <a href="https://www.tiktok.com/@tu.timbrado" target="_blank" rel="noreferrer" className="w-10 h-10 border-2 border-black rounded-lg flex items-center justify-center hover:bg-yellow-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none">
+            <a href="https://www.facebook.com/tutimbrado" target="_blank" rel="noreferrer" className="w-10 h-10 border-2 border-black rounded-lg flex items-center justify-center hover:bg-[#1877F2] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"><Facebook className="w-5 h-5" /></a>
+            <a href="https://www.instagram.com/tutimbrado/" target="_blank" rel="noreferrer" className="w-10 h-10 border-2 border-black rounded-lg flex items-center justify-center hover:bg-[#E1306C] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"><Instagram className="w-5 h-5" /></a>
+            <a href="https://www.tiktok.com/@tu.timbrado" target="_blank" rel="noreferrer" className="w-10 h-10 border-2 border-black rounded-lg flex items-center justify-center hover:bg-black hover:text-[#ff0050] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none">
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 15.68a6.34 6.34 0 0 0 6.27 6.36 6.34 6.34 0 0 0 6.25-6.36V7.95a8.16 8.16 0 0 0 5 1.54V6.05a4.81 4.81 0 0 1-2.93-1.36z" />
               </svg>
             </a>
-            <a href="https://x.com/TuTimbrado" target="_blank" rel="noreferrer" className="w-10 h-10 border-2 border-black rounded-lg flex items-center justify-center hover:bg-yellow-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none">
+            <a href="https://x.com/TuTimbrado" target="_blank" rel="noreferrer" className="w-10 h-10 border-2 border-black rounded-lg flex items-center justify-center hover:bg-black hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none">
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.216-6.818-5.968 6.818h-3.31l7.65-8.74-8.08-10.74h6.82l4.685 6.138z" />
               </svg>
             </a>
-            <a href="https://www.youtube.com/channel/UC9eNYZXObqReG1zjgSZHgLA" target="_blank" rel="noreferrer" className="w-10 h-10 border-2 border-black rounded-lg flex items-center justify-center hover:bg-yellow-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"><Youtube className="w-5 h-5" /></a>
+            <a href="https://www.youtube.com/channel/UC9eNYZXObqReG1zjgSZHgLA" target="_blank" rel="noreferrer" className="w-10 h-10 border-2 border-black rounded-lg flex items-center justify-center hover:bg-white hover:text-[#FF0000] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"><Youtube className="w-5 h-5" /></a>
           </div>
         </div>
       </div>
@@ -1218,10 +1222,10 @@ export default function App() {
                 <div className="flex-1 relative w-full overflow-hidden">
                   <div className="absolute -inset-4 border-2 border-black border-dashed rounded-3xl -z-10 rotate-2" />
                   <div className="relative">
-                    {/* 👇 AQUÍ PEGARÁS EL ENLACE DE TU FOTO DE "LA DIFERENCIA" 👇 */}
+                    {/* Foto de Cloudinary provista por la usuaria */}
                     <img
-                      src="https://PON_AQUI_EL_ENLACE_DE_TU_FOTO.jpg"
-                      className="animate-float rounded-[2.5rem] border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 w-full object-cover h-[250px] md:h-[300px]"
+                      src="https://res.cloudinary.com/dmv0u6d5l/image/upload/v1771810957/Captura_de_pantalla_2026-02-22_193944_vgxood.png"
+                      className="rounded-[2.5rem] border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 w-full object-cover h-[250px] md:h-[300px]"
                       alt="Dashboard preview"
                     />
 
