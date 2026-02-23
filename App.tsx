@@ -209,7 +209,7 @@ const Hero = () => {
             {/* Decorative background blob */}
             <div className="absolute w-[300px] h-[300px] bg-cyan-400/20 rounded-full blur-3xl animate-pulse right-0" />
 
-            {/* Computer Frame */}
+            {/* Computer Frame / Video */}
             <div className="relative w-[280px] lg:w-[420px] h-[200px] lg:h-[280px] border-4 border-black rounded-2xl bg-white shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] overflow-hidden group rotate-2 hover:rotate-0 transition-all duration-500 z-10 translate-x-0 lg:translate-x-4">
               {/* Browser Top Bar */}
               <div className="h-6 lg:h-8 border-b-4 border-black bg-gray-100 flex items-center px-3 gap-1.5">
@@ -217,19 +217,18 @@ const Hero = () => {
                 <div className="w-2.5 h-2.5 rounded-full bg-yellow-400 border border-black"></div>
                 <div className="w-2.5 h-2.5 rounded-full bg-green-400 border border-black"></div>
               </div>
-              {/* Screen Content */}
+              {/* Screen Content - Video */}
               <div className="relative w-full h-[calc(100%-1.5rem)] lg:h-[calc(100%-2rem)]">
-                <img
-                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800"
-                  alt="Sistema de facturación en línea"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent flex items-end p-4">
-                  <div className="bg-black text-white text-[10px] font-black px-3 py-1.5 rounded-lg border-2 border-white shadow-lg uppercase tracking-widest">
-                    Panel de Control
-                  </div>
-                </div>
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 bg-black"
+                >
+                  <source src="/mi-video-hero.mp4" type="video/mp4" />
+                  Tu navegador no permite reproducir este video.
+                </video>
               </div>
             </div>
 
@@ -1221,30 +1220,25 @@ export default function App() {
                 </div>
                 <div className="flex-1 relative w-full overflow-hidden">
                   <div className="absolute -inset-4 border-2 border-black border-dashed rounded-3xl -z-10 rotate-2" />
-                  {/* Añadida la clase "animate-float" para que el video levite suavemente */}
-                  <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="animate-float rounded-[2.5rem] border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] object-cover h-[450px] md:h-[500px] w-full bg-black hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] transition-shadow duration-500"
-                  >
-                    {/* 👇 AQUÍ VA EL NOMBRE DE TU VIDEO 👇 */}
-                    <source src="/mi-video-hero.mp4" type="video/mp4" />
-                    Tu navegador no permite reproducir este video.
-                  </video>
+                  <div className="relative">
+                    <img
+                      src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=800"
+                      className="animate-float rounded-[2.5rem] border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] transition-all duration-500 w-full object-cover h-[450px] md:h-[500px]"
+                      alt="Dashboard preview"
+                    />
 
-                  {/* Mockup de teléfono en la esquina */}
-                  <div className="absolute -bottom-4 right-0 md:-bottom-4 md:right-2 w-32 md:w-40 aspect-[9/19.5] bg-black border-[3px] border-black rounded-[2.5rem] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] rotate-6 p-1.5 overflow-hidden flex flex-col animate-bounce-slow">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-4 bg-black rounded-b-xl z-20" /> {/* Notch */}
-                    <div className="flex-grow bg-white rounded-[2rem] p-3 flex flex-col items-center justify-center text-center">
-                      <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mb-2 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                        <Check className="w-5 h-5 text-green-600 stroke-[3]" />
-                      </div>
-                      <h4 className="text-xs md:text-sm font-black leading-tight text-black mb-1">Factura realizada</h4>
-                      <p className="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-tighter">CFDI 4.0 Enviado</p>
-                      <div className="mt-3 w-full h-1 bg-gray-100 rounded-full overflow-hidden">
-                        <div className="w-full h-full bg-yellow-400 animate-pulse" />
+                    {/* Mockup de teléfono en la esquina */}
+                    <div className="absolute -bottom-4 right-0 md:-bottom-4 md:right-2 w-32 md:w-40 aspect-[9/19.5] bg-black border-[3px] border-black rounded-[2.5rem] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] rotate-6 p-1.5 overflow-hidden flex flex-col animate-bounce-slow">
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-4 bg-black rounded-b-xl z-20" /> {/* Notch */}
+                      <div className="flex-grow bg-white rounded-[2rem] p-3 flex flex-col items-center justify-center text-center">
+                        <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mb-2 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                          <Check className="w-5 h-5 text-green-600 stroke-[3]" />
+                        </div>
+                        <h4 className="text-xs md:text-sm font-black leading-tight text-black mb-1">Factura realizada</h4>
+                        <p className="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-tighter">CFDI 4.0 Enviado</p>
+                        <div className="mt-3 w-full h-1 bg-gray-100 rounded-full overflow-hidden">
+                          <div className="w-full h-full bg-yellow-400 animate-pulse" />
+                        </div>
                       </div>
                     </div>
                   </div>
