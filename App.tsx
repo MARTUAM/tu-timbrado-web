@@ -226,8 +226,8 @@ const Hero = () => {
                   playsInline
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 bg-black"
                 >
-                  {/* Video provisto por la usuaria */}
-                  <source src="https://drive.google.com/uc?export=download&id=11Yh2sJz8tDl3PM55vP2WGgF40UtdNu7O" type="video/mp4" />
+                  {/* 👇 ENLACE DE TU VIDEO (Debe terminar en .mp4 y NO ser de Google Drive) 👇 */}
+                  <source src="https://res.cloudinary.com/dmv0u6d5l/video/upload/v1771809766/mi-video-hero.mp4_ckzfmb.mp4" type="video/mp4" />
                   Tu navegador no permite reproducir este video.
                 </video>
               </div>
