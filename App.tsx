@@ -468,11 +468,10 @@ const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initi
     const formData = new FormData(form);
 
     // Add the specific option that the user selected
-    formData.append("Interes_Opcion", selectedOption);
+    formData.append("Mensaje_Seleccionado", selectedOption);
 
     try {
-      // Reemplaza YOUR_FORMSPREE_ID con tu ID real de Formspree (ej. "mqkenbyj")
-      const formspreeId = "YOUR_FORMSPREE_ID"; // <-- ¡Pon tu ID de Formspree aquí!
+      const formspreeId = "xbdapjpz";
       const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
         method: "POST",
         body: formData,
@@ -589,6 +588,7 @@ const ContactPage = ({ onBack, initialOption = "" }: { onBack: () => void, initi
                   <div className="relative">
                     <select
                       required
+                      name="Asunto"
                       value={selectedOption}
                       onChange={(e) => setSelectedOption(e.target.value)}
                       className="w-full bg-white border-2 border-black rounded-xl p-4 pr-10 font-bold focus:ring-4 ring-yellow-400/30 outline-none transition-all appearance-none cursor-pointer text-sm"
@@ -1219,7 +1219,7 @@ export default function App() {
                   </p>
                   <a href="https://sistema.tutimbrado.mx/cfdi/users/registro" className="px-8 py-3 rounded-full font-bold bg-yellow-400 hover:bg-yellow-500 text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none flex items-center justify-center gap-2 max-w-max">Quiero probarlo gratis</a>
                 </div>
-                <div className="flex-1 relative w-full overflow-hidden">
+                <div className="flex-1 relative w-full pb-8 md:pb-10 pr-2 md:pr-4">
                   <div className="absolute -inset-4 border-2 border-black border-dashed rounded-3xl -z-10 rotate-2" />
                   <div className="relative">
                     {/* Foto de Cloudinary provista por la usuaria */}
