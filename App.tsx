@@ -62,12 +62,12 @@ import {
 
 const playSound = (type = 'click') => {
   const sounds: any = {
-    click: 'https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3', // Subtle pop/click
-    hover: 'https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3'  // Light tick
+    click: 'https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3', // Cute pop sound
+    hover: 'https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3'   // Light tick
   };
   const audio = new Audio(sounds[type]);
-  audio.volume = 0.4;
-  audio.play().catch(() => { }); // Catch silence errors (browser blocks audio without interaction)
+  audio.volume = 1.0; // Increased to max volume
+  audio.play().catch(() => { });
 };
 
 // --- Shared Components & Utilities ---
